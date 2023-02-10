@@ -1,1 +1,34 @@
+import javax.swing.JOptionPane;
 
+public class Task1 {
+	public static void main(String[] args) {
+	int computeNum = (int)(Math.random() * 100 + 1);
+	int userAns = 0;
+	int count = 1;
+	try {
+		while(userAns != computeNum) {
+			String response = JOptionPane.showInputDialog(null,"Enter a number between 1 and 100");
+			userAns = Integer.parseInt(response);
+			JOptionPane.showMessageDialog(null," "+determineGuess(userAns,computeNum,count));
+			count++;
+			}
+		}catch(Exception e) {	
+		}
+	}
+	public static String determineGuess(int userAns,int computeNum,int count) {
+		
+		if(userAns <= 0 || userAns > 100)
+			return "Hint : Guess Number Between 1 to 100";
+		
+		else if (computeNum == userAns)
+			return "Correct !! \n Total incorrect inputs : " + count;
+		
+		else if(userAns > computeNum) 
+			return "Number is too high, try again,\n Try Number : "+count;
+		
+		else if(userAns < computeNum)
+			return "Number is too low,try again,\n Try Number : " +count;
+		else 
+			return "Your guess is incorrect \n Try Number :  " +count;
+	}
+}	
